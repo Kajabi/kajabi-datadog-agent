@@ -1,3 +1,17 @@
+# kajabi-datadog-agent
+
+This repo is a clone of github.com/heroku/log-iss, and is deployed to the Heroku app `kajabi-datadog-agent`.
+
+The purpose of this app is to forward Heroku's HTTP-based log drain to Datadog via Datadog's agent, which is installed as a buildpack.
+
+### Background
+
+While integrating Datadog, we found that their HTTP log ingestion endpoint was not able to scale to meet the volume of logs sent by Heroku's log drain, resulting in loss of ~20% of our log volume. See [this Heroku support ticket](https://help.heroku.com/727795) for more info. While `heroku/log-iss` is not an officially supported Heroku product, it was suggested as a solution.
+
+`log-iss` listens for HTTP logs from Heroku's drain and forwards them to the Datadog agent, listening locally. This is configured in `datadog/prerun.sh`. Datadog's agent sends the logs to their servers via a custom protobuff protocol.
+
+---
+
 # log-iss
 
 log-iss offers a
