@@ -11,6 +11,8 @@ echo "
 logs_enabled: true
 " >> "$DD_CONF_DIR/datadog.yaml"
 
+mkdir "$DD_CONF_DIR/conf.d/kajabi-production.d"
+
 echo "
 logs:
   - type: tcp
