@@ -13,12 +13,12 @@ echo "
 logs_enabled: true
 " >> "$DD_CONF_DIR/datadog.yaml"
 
-mkdir "$DD_CONF_DIR/conf.d/kajabi-production.d"
+mkdir "$DD_CONF_DIR/conf.d/$DEPLOY.d"
 
 echo "
 logs:
   - type: tcp
     port: 10518
-    service: kajabi-production
+    service: $DEPLOY
     source: custom
-" >> "$DD_CONF_DIR/conf.d/kajabi-production.d/conf.yaml"
+" >> "$DD_CONF_DIR/conf.d/$DEPLOY.d/conf.yaml"
