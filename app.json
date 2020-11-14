@@ -1,0 +1,33 @@
+{
+  "name": "kajabi-datadog-logs",
+  "env": {
+    "DD_API_KEY": {
+      "required": "true"
+    },
+    "DD_APM_ENABLED": "false",
+    "DD_DISABLE_HOST_METRICS": "true",
+    "DEPLOY": "kajabi-storefronts-staging",
+    "FORWARD_DEST": "127.0.0.1:10518",
+    "HMAC_KEY": {
+      "required": "true"
+    },
+    "TOKEN_MAP": {
+      "required": "true"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "standard-1x"
+    }
+  },
+  "image": "heroku/go",
+  "buildpacks": [
+    {
+      "url": "https://github.com/DataDog/heroku-buildpack-datadog.git"
+    },
+    {
+      "url": "heroku/go"
+    }
+  ]
+}
